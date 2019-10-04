@@ -1,14 +1,15 @@
 import React from "react";
 import WeaponItem from "./WeaponItem";
 import uuid from "uuid";
+import NewHero from "./NewHero";
 
 export default function Hero(props) {
   // console.log("HERO PROPS", props);
   const { name, health, inventory } = props.hero;
+
   return (
     <div>
-      <h1>Our Hero</h1>
-      <h2>{name}</h2>
+      <h1>Welcome, {name}!</h1>
       <h3>Health</h3>
       <p>
         {health}

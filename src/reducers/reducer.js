@@ -26,6 +26,11 @@ const heroBatman = (state = initialState, action = {}) => {
         ...state,
         inventory: [...state.inventory, action.payload]
       };
+    case "NEW_NAME":
+      return {
+        ...state,
+        name: action.payload
+      };
     default:
       return state;
   }

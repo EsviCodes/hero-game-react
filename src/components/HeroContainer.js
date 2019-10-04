@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Hero from "./Hero";
+import NewHero from "./NewHero";
 
 class HeroContainer extends React.Component {
   rest = () => {
@@ -8,6 +9,18 @@ class HeroContainer extends React.Component {
     // console.log((this.props.heroBatman.health = 10)); // works!
     this.props.dispatch({
       type: "REST"
+    });
+  };
+
+  changeName = name => {
+    // console.log(
+    //   "I am a callback prop and I have access to",
+    //   this.props.dispatch
+    // );
+    console.log("new name:", name);
+    this.props.dispatch({
+      type: "NEW_NAME",
+      payload: name
     });
   };
 
@@ -32,12 +45,16 @@ class HeroContainer extends React.Component {
   };
   render() {
     return (
-      <Hero
-        hero={this.props.heroBatman}
-        updateHealth={this.rest}
-        stunGrenade={this.stunGrenade}
-        battarang={this.battarang}
-      />
+      <div>
+        <p>Hi There! What's your name?</p>
+        <NewHero hero={this.props.heroBatman} changeName={this.changeName} />
+        <Hero
+          hero={this.props.heroBatman}
+          updateHealth={this.rest}
+          stunGrenade={this.stunGrenade}
+          battarang={this.battarang}
+        />
+      </div>
     );
   }
 }
